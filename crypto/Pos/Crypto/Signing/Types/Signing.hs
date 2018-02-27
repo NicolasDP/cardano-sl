@@ -29,7 +29,6 @@ module Pos.Crypto.Signing.Types.Signing
 
 import qualified Cardano.Crypto.Wallet as CC
 import           Data.Hashable (Hashable)
-import qualified Data.Hashable as Hashable
 import qualified Data.Text.Buildable as B
 import           Data.Text.Lazy.Builder (Builder)
 import           Formatting (Format, bprint, build, fitLeft, later, (%), (%.))
@@ -41,22 +40,6 @@ import           Universum hiding (show)
 
 import           Pos.Binary.Class (Bi)
 import           Pos.Crypto.Hashing (hash)
-
-----------------------------------------------------------------------------
--- Orphan instances
-----------------------------------------------------------------------------
-
-instance Eq CC.XPub where
-    a == b = CC.unXPub a == CC.unXPub b
-
-instance Ord CC.XPub where
-    compare = comparing CC.unXPub
-
-instance Show CC.XPub where
-    show = show . CC.unXPub
-
-instance Hashable CC.XPub where
-    hashWithSalt n = Hashable.hashWithSalt n . CC.unXPub
 
 ----------------------------------------------------------------------------
 -- Keys, key generation & printing & decoding
